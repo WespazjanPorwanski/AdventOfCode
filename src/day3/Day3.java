@@ -20,9 +20,7 @@ public class Day3 {
     private static void fillNodeList(String[] input) {
         Node startingNode = new Node(0, 0);
         for (String move : input) {
-            String direction = move.substring(0, 1);
-            Integer way = Integer.valueOf(move.substring(1));
-            move(way, direction, startingNode);
+            move(Integer.valueOf(move.substring(1)), move.substring(0, 1), startingNode);
         }
     }
 
