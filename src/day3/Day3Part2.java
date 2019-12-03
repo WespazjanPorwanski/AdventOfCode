@@ -4,16 +4,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Day3 {
+public class Day3Part2 {
 
-    static Set<Node> firstWireNodes = new HashSet<>();
-    static Set<Node> matchingNodes = new HashSet<>();
+    static Map<Node, Integer> firstWireNodesMap = new HashMap<>();
+    static Map<Node, Integer> matchingNodesMap = new HashMap<>();
+    static Integer stepa = 0;
+    static Integer stepb = 0;
 
     public static void main() {
         List<String[]> input = readFile();
         fillNodeList(input.get(0));
         fillIMatchingNodes(input.get(1));
-        int min = matchingNodes.stream().map(node -> Math.abs(node.x) + Math.abs(node.y)).min(Integer::compareTo).orElse(0);
+        int min = matchingNodesMap.values().stream().min(Integer::compareTo).orElse(0);
         System.out.println(min);
     }
 
@@ -26,6 +28,7 @@ public class Day3 {
 
     private static void fillIMatchingNodes(String[] input) {
         Node startingNode = new Node(0, 0);
+        Integer step = 0;
         for (String move : input) {
             moveAndCheck(Integer.valueOf(move.substring(1)), move.substring(0, 1), startingNode);
         }
@@ -34,7 +37,8 @@ public class Day3 {
     static void move(Integer way, String direction, Node node) {
         for (int i = 0; i < way; i++) {
             moveNode(direction, node);
-            firstWireNodes.add(new Node(node));
+            stepa++;
+            firstWireNodesMap.put(new Node(node), stepa);
         }
     }
 
@@ -56,9 +60,10 @@ public class Day3 {
     static void moveAndCheck(Integer way, String direction, Node node) {
         for (int i = 0; i < way; i++) {
             moveNode(direction, node);
+            stepb++;
             Node newNode = new Node(node);
-            if (firstWireNodes.contains(newNode)) {
-                matchingNodes.add(newNode);
+            if (firstWireNodesMap.containsKey(newNode)) {
+                matchingNodesMap.put(newNode, stepb + firstWireNodesMap.get(newNode));
             }
         }
     }

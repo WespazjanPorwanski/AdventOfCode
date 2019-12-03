@@ -1,5 +1,5 @@
-import day2.Day2Part2;
-import day3.Day3;
+import day3.Day3Part1;
+import day3.Day3Part2;
 
 public class Main {
 
@@ -7,6 +7,7 @@ public class Main {
 //        Day1Part1.main();
 //        Day1Part2.main();
 //        Day2Part1.main();
-        Day3.main();
+//        Day3Part1.main();
+        Day3Part2.main();
     }
 }
