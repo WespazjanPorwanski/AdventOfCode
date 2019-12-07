@@ -1,4 +1,6 @@
 import day5.Day5Part2;
+import day6.Day6Part1Kt;
+import day6.Day6Part2Kt;
 
 public class Main {
 
@@ -10,6 +12,8 @@ public class Main {
 //        Day3Part2.main();
 //        Day4Part1.main();
 //        Day5Part1.main();
-        Day5Part2.main();
+//        Day5Part2.main();
+//        Day6Part1Kt.main();
+        Day6Part2Kt.main();
     }
 }
